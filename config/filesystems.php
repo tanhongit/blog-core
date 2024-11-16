@@ -99,7 +99,8 @@ return [
     */
 
     'links' => [
-        public_path('storage') => env('FILESYSTEM_FILE_ROOT', storage_path('app/public')),
+        public_path('storage') => env('APP_ENV') === \CSlant\Blog\Core\Constants\AppConstant::APP_ENV_PROD
+            ? env('FILESYSTEM_FILE_ROOT', storage_path('app/public'))
+            : storage_path('app/public'),
     ],
-
 ];
