@@ -10,4 +10,6 @@ class AppConstant
 
     // App Environment: local, staging, production
     public const APP_ENV_PROD = 'production';
+
+    public const DEFAULT_LOCALE = 'en';
 }
