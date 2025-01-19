@@ -6,6 +6,7 @@ use AllowDynamicProperties;
 use Carbon\Carbon;
 use CSlant\Blog\Core\Models\Base\BaseCategory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * Class Category
@@ -25,8 +26,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int $is_default
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * @property string $slug
+ * @property Slug $slug
  * @property string $url
+ * @property Category $parent
+ * @property Category[] $children
  *
  * @method static Builder|Category newModelQuery()
  * @method static Builder|Category newQuery()
@@ -45,4 +48,12 @@ use Illuminate\Database\Eloquent\Builder;
 #[AllowDynamicProperties]
 class Category extends BaseCategory
 {
+    /**
+     * @return HasOne<Slug>
+     */
+    public function slug(): HasOne
+    {
+        return $this->hasOne(Slug::class, 'reference_id', 'id')
+            ->where('reference_type', $this->getBaseModel());
+    }
 }
