@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $first_name
  * @property string $last_name
  * @property string $username
- * @property array $permissions
+ * @property object $permissions
  * @property string $avatar_url Property for avatar image url
  * @property null|Role $roles
  *

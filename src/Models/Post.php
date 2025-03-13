@@ -27,8 +27,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property Carbon $updated_at
  * @property Slug $slug
  * @property string $url
- * @property array $tags
- * @property array $categories
+ * @property Tag[] $tags
+ * @property Category[] $categories
  * @property string $image
  * @property string $author
  *
@@ -49,9 +49,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 #[AllowDynamicProperties]
 class Post extends BasePost
 {
-    /**
-     * @return HasOne<Slug>
-     */
     public function slug(): HasOne
     {
         return $this->hasOne(Slug::class, 'reference_id', 'id')
